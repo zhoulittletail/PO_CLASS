@@ -1,7 +1,7 @@
 from appium import webdriver
 
 
-class TestSetting:
+class TestNetwrok:
 
     def setup(self):
         # server 启动参数
@@ -31,9 +31,3 @@ class TestSetting:
         self.driver.find_element_by_xpath("//*[contains(@text,'移动网络')]").click()
         self.driver.find_element_by_xpath("//*[contains(@text,'首选网络类型')]").click()
         self.driver.find_element_by_xpath("//*[contains(@text,'3G')]").click()
-
-    def test_display_search(self):
-        self.driver.find_element_by_xpath("//*[contains(@text,'显示')]").click()
-        self.driver.find_element_by_id("com.android.settings:id/search").click()
-        self.driver.find_element_by_id("android:id/search_src_text").send_keys("hello")
-        self.driver.find_element_by_class_name("android.widget.ImageButton").click()
