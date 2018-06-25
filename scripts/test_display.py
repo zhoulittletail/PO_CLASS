@@ -10,7 +10,7 @@ class TestDisplay:
     def test_display_search(self):
         self.display_page.click_display()
         self.display_page.click_search()
-        self.display_page.input_keyword()
+        self.display_page.input_keyword("hello")
         self.display_page.click_back()
 
     # def test_display_search1(self):
