@@ -1,3 +1,6 @@
+from selenium.webdriver.support.wait import WebDriverWait
+
+
 class BaseAction:
 
     def __init__(self, driver):
@@ -26,4 +29,5 @@ class BaseAction:
         :param feature: 特征
         :return: 元素
         """
-        return self.driver.find_element(feature[0], feature[1])
+        wait = WebDriverWait(self.driver, 5, 1)
+        return wait.until(lambda x: x.find_element(feature[0], feature[1]))
