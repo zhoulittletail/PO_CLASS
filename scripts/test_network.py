@@ -1,6 +1,5 @@
 from base import init_driver
-from page.network_page import NetwrokPage
-from page.page import Page
+from page import Page
 
 
 class TestNetwrok:
@@ -8,6 +7,8 @@ class TestNetwrok:
     def setup(self):
         self.driver = init_driver()
         self.page = Page(self.driver)
+
+
 
     def test_network_2g(self):
         self.page.network.click_more()

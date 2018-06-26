@@ -1,7 +1,5 @@
 from base import init_driver
-from page.display_page import DisplayPage
-from page.network_page import NetwrokPage
-from page.page import Page
+from page import Page
 
 
 class TestDisplay:
