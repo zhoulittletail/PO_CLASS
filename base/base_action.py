@@ -31,3 +31,12 @@ class BaseAction:
         """
         wait = WebDriverWait(self.driver, 5, 1)
         return wait.until(lambda x: x.find_element(feature[0], feature[1]))
+
+    def find_elements(self, feature):
+        """
+        根据特征，找元素
+        :param feature: 特征
+        :return: 元素
+        """
+        wait = WebDriverWait(self.driver, 5, 1)
+        return wait.until(lambda x: x.find_elements(feature[0], feature[1]))
