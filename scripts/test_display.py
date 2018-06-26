@@ -1,19 +1,18 @@
 from base import init_driver
 from page.display_page import DisplayPage
+from page.network_page import NetwrokPage
+from page.page import Page
+
 
 class TestDisplay:
 
     def setup(self):
         self.driver = init_driver()
-        self.display_page = DisplayPage(self.driver)
+        self.page = Page(self.driver)
 
     def test_display_search(self):
-        self.display_page.click_display()
-        self.display_page.click_search()
-        self.display_page.input_keyword("hello")
-        self.display_page.click_back()
+        self.page.display.click_display()
+        self.page.display.click_search()
+        self.page.display.input_keyword("hello")
+        self.page.display.click_back()
 
-    # def test_display_search1(self):
-    #     self.display_page.click_search()
-    #     self.display_page.input_keyword()
-    #     self.display_page.click_back()
