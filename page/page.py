@@ -1,5 +1,5 @@
 from page.display_page import DisplayPage
-from page.network_page import NetwrokPage
+from page.network_page import NetworkPage
 
 
 class Page:
@@ -16,4 +16,4 @@ class Page:
 
     @property
     def network(self):
-        return NetwrokPage(self.driver)
+        return NetworkPage(self.driver)

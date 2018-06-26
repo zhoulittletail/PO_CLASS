@@ -4,7 +4,7 @@ from base import BaseAction
 
 class DisplayPage(BaseAction):
 
-    display_button = By.XPATH, "//*[contains(@text,'显示')]"
+    display_button = By.XPATH, "text,显示"
     search_button = By.ID, "com.android.settings:id/search"
     search_edit_text = By.ID, "android:id/search_src_text"
     back_button = By.CLASS_NAME, "android.widget.ImageButton"

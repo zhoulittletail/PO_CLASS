@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from base import BaseAction
 
 
-class NetwrokPage(BaseAction):
+class NetworkPage(BaseAction):
 
     more_button = By.XPATH, "//*[contains(@text,'更多')]"
     mobile_network_button = By.XPATH, "//*[contains(@text,'移动网络')]"

@@ -2,13 +2,13 @@ from base import init_driver
 from page import Page
 
 
-class TestNetwrok:
+class TestNetwork:
+
+    driver, page = None, None
 
     def setup(self):
         self.driver = init_driver()
         self.page = Page(self.driver)
-
-
 
     def test_network_2g(self):
         self.page.network.click_more()
