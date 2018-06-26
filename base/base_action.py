@@ -48,7 +48,7 @@ class BaseAction:
         return wait.until(lambda x: x.find_elements(feature[0], feature[1]))
 
     @staticmethod
-    def __make_xpath_with_unit_feature(loc):
+    def __make_xpath_with_unit_feature(xpath_value):
         """
         拼接xpath中间的部分
         :param loc:
@@ -58,38 +58,38 @@ class BaseAction:
         value_index = 1
         option_index = 2
 
-        args = loc.split(",")
-        feature = ""
-
-        if len(args) == 2:
-            feature = "contains(@" + args[key_index] + ",'" + args[value_index] + "')" + "and "
-        elif len(args) == 3:
+        res_value = ""
+        args = xpath_value.split(",")
+        if len(args) == 3:
             if args[option_index] == "1":
-                feature = "@" + args[key_index] + "='" + args[value_index] + "'" + "and "
+                res_value += "@%s='%s' and " % (args[key_index], args[value_index])
             elif args[option_index] == "0":
-                feature = "contains(@" + args[key_index] + ",'" + args[value_index] + "')" + "and "
+                res_value += "contains(@%s,'%s') and " % (args[key_index], args[value_index])
+        elif len(args) == 2:
+            res_value += "contains(@%s,'%s') and " % (args[key_index], args[value_index])
 
-        return feature
+        return res_value
 
-    def __make_xpath_with_feature(self, loc):
-        feature_start = "//*["
-        feature_end = "]"
-        feature = ""
+    def __make_xpath_with_feature(self, xpath_value):
 
-        if isinstance(loc, str):
-            # 如果是正常的xpath
-            if loc.startswith("//"):
-                return loc
+        xpath_start = "//*["
+        xpath_end = "]"
+        res_value = ""
 
-            # loc str
-            feature = self.__make_xpath_with_unit_feature(loc)
-        else:
-            # loc 列表
-            for i in loc:
-                feature += self.__make_xpath_with_unit_feature(i)
+        if isinstance(xpath_value, str):
 
-        feature = feature.rstrip("and ")
+            # 系统的xpath
+            if xpath_value.startswith("/"):
+                return xpath_value
 
-        loc = feature_start + feature + feature_end
+            res_value = self.__make_xpath_with_unit_feature(xpath_value)
 
-        return loc
+        elif isinstance(xpath_value, tuple):
+            for i in xpath_value:
+                res_value += self.__make_xpath_with_unit_feature(i)
+
+        res_value = res_value.rstrip(" and ")
+
+        res_value = xpath_start + res_value + xpath_end
+
+        return res_value
